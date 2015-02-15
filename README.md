@@ -22,9 +22,13 @@ I have simply transposed the code and documentation into a git-friendly way of s
 
 	create a title text from the given string, e.g. “WelcomePage”, “welcome_page” or “welcome page” to “Welcome Page”.
 
+- `Inflector::pascalize` 
+
+	return the PascalCased text from the given string, e.g. “send_email” to “SendEmail”, “who’s online” to “WhoSOnline”.
+
 - `Inflector::camelize` 
 
-	return the CamelCased text from the given string, e.g. “send_email” to “SendEmail”, “who’s online” to “WhoSOnline”.
+	return the camelCased text from the given string, e.g. “send_email” to “sendEmail”, “who’s online” to “whoSOnline”.
 
 - `Inflector::underscore` 
 
@@ -52,37 +56,38 @@ I have simply transposed the code and documentation into a git-friendly way of s
 ````php
 /* Singular to plural / Plural to singular */
 
-echo Inflector::pluralize('search'); // outputs searches
-echo Inflector::singularize('cases'); // outputs case
-echo Inflector::pluralize('query'); // outputs queries
-echo Inflector::singularize('queries'); // outputs query
-echo Inflector::pluralize('ability'); // outputs abilities
-echo Inflector::singularize('abilities'); // outputs ability
-echo Inflector::pluralize('analysis'); // outputs analyses
-echo Inflector::singularize('analyses'); // outputs analysis
-echo Inflector::pluralize('information'); // outputs information
-echo Inflector::singularize('information'); // outputs information
-echo Inflector::pluralize('mouse'); // outputs mice
-echo Inflector::singularize('mice'); // outputs mouse
+echo Inflector::pluralize('search'); //  searches
+echo Inflector::singularize('cases'); //  case
+echo Inflector::pluralize('query'); //  queries
+echo Inflector::singularize('queries'); //  query
+echo Inflector::pluralize('ability'); //  abilities
+echo Inflector::singularize('abilities'); //  ability
+echo Inflector::pluralize('analysis'); //  analyses
+echo Inflector::singularize('analyses'); //  analysis
+echo Inflector::pluralize('information'); //  information
+echo Inflector::singularize('information'); //  information
+echo Inflector::pluralize('mouse'); //  mice
+echo Inflector::singularize('mice'); //  mouse
 
 /* CamelCase to underscore / underscore to CamelCase */
 
-echo Inflector::underscore('SpecialGuest'); // outputs special_guest
-echo Inflector::camelize('special_guest'); // outputs SpecialGuest
-echo Inflector::underscore('FreeBSD'); // outputs free_bsd
-echo Inflector::camelize('free_bsd'); // outputs FreeBsd
-echo Inflector::underscore('HTML'); // outputs html
-echo Inflector::camelize('html'); // outputs Html
+echo Inflector::underscore('SpecialGuest'); //  special_guest
+echo Inflector::underscore('FreeBSD'); //  free_bsd
+echo Inflector::underscore('HTML'); //  html
+echo Inflector::pascalize('free_bsd'); //  FreeBsd
+echo Inflector::pascalize('html-home'); //  HtmlHome
+echo Inflector::camelize('free_bsd'); //  freeBsd
+echo Inflector::camelize('html-home'); //  htmlHome
 
 /* Underscore to "human-text" / "Human-text" to Underscore */
 
-echo Inflector::humanize('employee_salary'); // outputs Employee salary
-echo Inflector::underscore('Employee salary'); // outputs employee_salary
+echo Inflector::humanize('employee_salary'); //  Employee salary
+echo Inflector::underscore('Employee salary'); //  employee_salary
 
 /* Examples of titleize() */
 
-echo Inflector::titleize('ActiveRecord'); // outputs Active Record
-echo Inflector::titleize('action web service'); // outputs Action Web Service
+echo Inflector::titleize('ActiveRecord'); // Active Record
+echo Inflector::titleize('action web service'); // Action Web Service
 
 /* Examples of ordinalize() */
 

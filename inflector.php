@@ -134,6 +134,7 @@ class Inflector {
 			'/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)ses$/i' => '\1\2sis',
 			'/([ti])a$/i' => '\1um',
 			'/(n)ews$/i' => '\1ews',
+			'/(.*ss$)/i' => '\1',
 			'/s$/i' => '',
 		);
 
@@ -194,7 +195,7 @@ class Inflector {
 	}
 
 	/**
-	* Returns given word as CamelCased
+	* Returns given word as PascalCased
 	*
 	* Converts a word like "send_email" to "SendEmail". It
 	* will remove non alphanumeric character from the word, so
@@ -203,12 +204,29 @@ class Inflector {
 	* @access public
 	* @static
 	* @see variablize
-	* @param    string    $word    Word to convert to camel case
-	* @return string UpperCamelCasedWord
+	* @param    string    $word    Word to convert to pascal case
+	* @return string UpperPascalCasedWord
 	*/
-	static function camelize($word)
+	static function pascalize($word)
 	{
 		return str_replace(' ','',ucwords(preg_replace('/[^A-Z^a-z^0-9]+/',' ',$word)));
+	}
+	
+	/**
+	* Returns given word as camelCased
+	*
+	* Converts a word like "send_email" to "sendEmail". It
+	* will remove non alphanumeric character from the word, so
+	* "who's online" will be converted to "WhoSOnline"
+	*
+	* @access public
+	* @static
+	* @see variablize
+	* @param    string    $word    Word to convert to camel case
+	* @return string lowerCamelCasedWord
+	*/
+	static function camelize($word) {
+		return lcfirst(self::pascalize($word));
 	}
 
 	/**
